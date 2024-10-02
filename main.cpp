@@ -6,8 +6,8 @@
 #include "Vaquita.h"
 #include "Gallinita.h"
 
-void mostrar_granja(Vaquita vaquitas[], std::size_t num_vaquitas,
-	Gallinita gallinitas[], std::size_t num_gallinitas) {
+void mostrar_granja(Vaquita vaquitas[], std::size_t num_vaquitas, Gallinita gallinitas[], std::size_t num_gallinitas) 
+{
 	std::cout << std::endl << "Estado de la granja:" << std::endl;
 
 	/* COMPLETAR
@@ -21,23 +21,26 @@ void mostrar_granja(Vaquita vaquitas[], std::size_t num_vaquitas,
 
 	   Ejemplo de formato para las gallinitaS:
 
-		 Gallinita 2: 3 huevos.
+	 Gallinita 2: 3 huevos.
 	*/
 	/*HECHO*/
 	std::cout << std::endl << "Vaquitas: " << std::endl;
-	for (std::size_t i=0; i < num_vaquitas; i++) {
+	for (std::size_t i = 0; i < num_vaquitas; i++) 
+	{
 		vaquitas[i].Imprimir();
 	}
 
 
 	std::cout << std::endl << "Gallinitas: " << std::endl;
-	for (std::size_t i=0; i < num_gallinitas; i++) {
+	for (std::size_t i = 0; i < num_gallinitas; i++)
+	{
 		gallinitas[i].Imprimir();
 	}
 }
 
 /*HECHO*/
-std::size_t get_rondas() {
+std::size_t get_rondas() 
+{
 
 	/* COMPLETAR
 
@@ -52,21 +55,25 @@ std::size_t get_rondas() {
 	std::cout << "Dame un número del 0 al 20" << std::endl;
 	std::string ronda_string;
 
-	do {
+	do 
+	{
 
 		std::cin >> ronda_string;
 
 		ronda = std::stoi(ronda_string);
 
-		if (ronda > 20) {
+		if (ronda > 20) 
+		{
 			std::cout << "Vuelve a darme un número del 0 al 20";
 		}
-	} while (ronda > 20);
+	}
+	while (ronda > 20);
 
 	return ronda;
 }
 
-int main() {
+int main() 
+{
 	const std::size_t num_vaquitas{ 3 };
 	const std::size_t num_gallinitas{ 7 };
 	std::size_t i{ 0 };
@@ -92,13 +99,15 @@ int main() {
 	std::size_t rondas{ get_rondas() };
 
 
-	while (rondas > 0) {
+	while (rondas > 0) 
+	{
 
 		std::size_t semilla{ static_cast<std::size_t>(rand() % 10 + 1) };
 
 		mostrar_granja(vaquitas, num_vaquitas, gallinitas, num_gallinitas);
 
-		try {
+		try 
+		{
 
 			/* COMPLETAR
 
@@ -120,12 +129,15 @@ int main() {
 
 
 			std::cout << std::endl;
-			for (int i = 0; i < num_vaquitas; i++) {
-				if (vaquitas[i].get_leche() < semilla) {
+			for (int i = 0; i < num_vaquitas; i++) 
+			{
+				if (vaquitas[i].get_leche() < semilla) 
+				{
 					vaquitas[i].set_leche(vaquitas[i].get_leche() + semilla);
 					std::cout << "La vaquita " << vaquitas[i].get_raza() << "se ha alimantado con una cantidad de " << semilla << " ahora tiene " << vaquitas[i].get_leche() << " litros." << std::endl;
 				}
-				else {
+				else 
+				{
 					vaquitas[i].set_leche(vaquitas[i].get_leche() - semilla);
 					std::cout << "La vaquita " << vaquitas[i].get_raza() << "se ha ordeñado con una cantidad de " << semilla << " ahora tiene " << vaquitas[i].get_leche() << " litros." << std::endl;
 				}
@@ -133,21 +145,24 @@ int main() {
 
 
 			std::cout << std::endl;
-			for (int i = 0; i < num_gallinitas; i++) {
-				if (gallinitas[i].get_huevo() < semilla) {
+			for (int i = 0; i < num_gallinitas; i++) 
+			{
+				if (gallinitas[i].get_huevo() < semilla) 
+				{
 					gallinitas[i].set_huevos(gallinitas[i].get_huevo() + semilla);
 					std::cout << "La gallinita " << gallinitas[i].get_numero() << "se ha alimantado con una cantidad de " << semilla << " ahora tiene " << gallinitas[i].get_huevo() << " huevos." << std::endl;
 				}
-				else {
+				else 
+				{
 					gallinitas[i].set_huevos(gallinitas[i].get_huevo() - semilla);
 					std::cout << "La gallinita " << gallinitas[i].get_numero() << "se le ha recolectado con una cantidad de " << semilla << " ahora tiene " << gallinitas[i].get_huevo() << " huevos." << std::endl;
 				}
 			}
 
 			--rondas;
-
 		}
-		catch (std::runtime_error& e) {
+		catch (std::runtime_error& e) 
+		{
 
 			std::cout << e.what() << std::endl;
 		}
